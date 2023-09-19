@@ -1,7 +1,7 @@
 import React from "react";
 import { ConteinerHome } from "./home";
 import Header from "../header";
-import { ConteinerMain } from "../conteudo/principal"
+import { ConteinerMain, SubTitulo, Conteiner } from "../conteudo/principal"
 import { Cards } from "../conteudo/se";
 import { BuscaImagens } from "../conteudo/se/UnsplashImage";
 import { ConteinerPrincipal } from "../../App"
@@ -29,17 +29,16 @@ function Galeria() {
     return (
         <ConteinerPrincipal>
             <ConteinerGaleria>
-            <Outlet/>
+                <Outlet />
                 <Header />
-                <ConteinerMain>
-                    <ConteinerGaleria>
+                <Conteiner style={{ justifyContent:"center", alignItems:"center"}}>
+                    <SubTitulo style={{inset:"0"}}>Busque as imagens mais fofas de gatos</SubTitulo>
+                    <Cards >
 
-                        <Cards >
-                            <BuscaImagens />
+                        <BuscaImagens />
 
-                        </Cards>
-                    </ConteinerGaleria>
-                </ConteinerMain>
+                    </Cards>
+                </Conteiner>
             </ConteinerGaleria>
 
         </ConteinerPrincipal>

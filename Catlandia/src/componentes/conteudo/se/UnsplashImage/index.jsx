@@ -5,9 +5,26 @@ import { Cards } from "..";
 
 const SearchInput = styled.input`
   padding: 5px;
-  margin: 10px;
+  margin: 0px;
   width: 300px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+const InputButto = styled.input`
+ width: 5rem;
+ height: 2rem;
+ display: flex;
+  justify-content: center;
+  align-items: center;
+ cursor: pointer;
+background-color: #cb9fd6;
+ padding: 0;
+  margin: 0;
+  border: 1px solid;
+  border-radius: 4px;
+`
 
 const Conteiner = styled.div`
   display: flex;
@@ -17,6 +34,7 @@ const Conteiner = styled.div`
   flex-wrap: wrap;
   gap: 5px;
 `;
+
 
 const Imagem = styled.img`
 position :relative ;
@@ -42,6 +60,7 @@ export const BtnImage = styled.button`
   background-color: #ffffff;
   transition: 0.5s;
 `;
+
 
 export const UnsplashImage = ({ query }) => {
   const [image, setImage] = useState(null);
@@ -110,25 +129,33 @@ export const BuscaImagens = () => {
   };
   
   return (
-    <Conteiner className="App">
-      <h1>Buscador de Imagens do Unsplash</h1>
+    <Conteiner >
+     
       <SearchInput
         type="text"
         placeholder="Digite sua busca"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <BtnImage onClick={handleSearch}>Buscar</BtnImage>
-        {images.map((image) => (
-          <Cards key={image.id}>
+      <InputButto
+      type="button"
+      value ="buscar"
+      onClick={handleSearch}
+    
+
+      />
+        <Conteiner style={{gap:"2px"}}>
+        {images.map((images) => (
+          <Cards key={images.id}>
             <Imagem
-              src={image.urls.small}
-              alt={image.alt_description || "Imagem"}
+              src={images.urls.small}
+              alt={images.alt_description || "Imagem"}
             />
           </Cards>
         ))}
-     
+        </Conteiner>
     </Conteiner>
+  
   );
 };
-
+ 

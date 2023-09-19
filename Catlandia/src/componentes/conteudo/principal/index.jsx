@@ -67,7 +67,7 @@ color: ${letraTitulo};
   inset: 10px  10px 10px 50px;
 }
 `
-const SubTitulo = styled.h3`
+export const SubTitulo = styled.h3`
 display:flex ;
 font-size:30px;
 width: 85%;

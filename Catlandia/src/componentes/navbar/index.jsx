@@ -24,7 +24,7 @@ function Navbar() {
             <Nav>
                 <Lista>
                     <Li>  <StyledLink to="/">Home</StyledLink>   </Li>
-                    <Li>  <StyledLink to="galeria" >Galeria</StyledLink>  </Li>
+                    <Li>  <StyledLink to="/galeria" >Galeria</StyledLink>  </Li>
                 </Lista>
             </Nav>
         </Conteiner>
