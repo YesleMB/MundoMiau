@@ -86,11 +86,12 @@ export const UnsplashImage = ({ query }) => {
 };
 
 
-export const BuscaImagens=()=> {
+export const BuscaImagens = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [images, setImages] = useState([]);
 
-  const API_KEY = "D77wV2OkFCif1ffpdi9B_eGF069LMLtF8_SKVQdTxs0"; 
+  const API_KEY = "D77wV2OkFCif1ffpdi9B_eGF069LMLtF8_SKVQdTxs0";
+
   const handleSearch = async () => {
     try {
       const response = await axios.get(
@@ -99,41 +100,35 @@ export const BuscaImagens=()=> {
           headers: {
             Authorization: `Client-ID ${API_KEY}`,
           },
-          params: {
-            query: mappedQuery,
-            w: 400,
-            h: 250,
-          },
         }
       );
-
+  
       setImages(response.data.results);
     } catch (error) {
       console.error("Erro ao buscar imagens:", error);
     }
   };
-  return(
-    <div className="App">
-    <h1>Buscador de Imagens do Unsplash</h1>
-    <SearchInput
-      type="text"
-      placeholder="Digite sua busca"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-    />
-    <BtnImage onClick={handleSearch}>Buscar</BtnImage>
-    <Conteiner>
-      {images.map((image) => (
-        <Cards key={image.id}>
-          <Imagem
-            src={image.urls.small}
-            alt={image.alt_description || "Imagem"}
-          />
-        </Cards>
-      ))}
-    </Conteiner>
-  </div>
-);
   
-}
+  return (
+    <Conteiner className="App">
+      <h1>Buscador de Imagens do Unsplash</h1>
+      <SearchInput
+        type="text"
+        placeholder="Digite sua busca"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <BtnImage onClick={handleSearch}>Buscar</BtnImage>
+        {images.map((image) => (
+          <Cards key={image.id}>
+            <Imagem
+              src={image.urls.small}
+              alt={image.alt_description || "Imagem"}
+            />
+          </Cards>
+        ))}
+     
+    </Conteiner>
+  );
+};
 
