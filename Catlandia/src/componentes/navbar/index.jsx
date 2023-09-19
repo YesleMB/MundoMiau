@@ -15,9 +15,6 @@ text-decoration: none;
 color: #000000;
 transition: color 0.3s ease; 
 
-:hover {
-  color: #ff0000; 
-}
 `;
 
 

@@ -12,7 +12,7 @@ const Router = createBrowserRouter([
   element: <App/>,
   children: [
     {
-      path:"galeria",
+      path:"/galeria",
       element:<Galeria/>,  
      },
      {
