@@ -5,6 +5,7 @@ import Main from "../conteudo/principal";
 import { corDeFundo } from "../UI";
 import { Outlet } from "react-router-dom";
 import { ConteinerPrincipal } from "../../App"
+import Footter from "../Footter";
 
 export const ConteinerHome = styled.div`
 display: inline-flex;
@@ -23,6 +24,7 @@ function Home() {
                 <Outlet />
                 <Header />
                 <Main />
+                 <Footter/>
             </ConteinerHome>
         </ConteinerPrincipal>
 

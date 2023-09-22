@@ -108,13 +108,17 @@ export const UnsplashImage = ({ query }) => {
 export const BuscaImagens = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [images, setImages] = useState([]);
+  const [error, setError] = useState("");
+
 
   const API_KEY = "D77wV2OkFCif1ffpdi9B_eGF069LMLtF8_SKVQdTxs0";
 
   const handleSearch = async () => {
     try {
+      const query = `cat ${searchQuery};`
       const response = await axios.get(
-        `https://api.unsplash.com/search/photos?query=${searchQuery}&per_page=6`,
+        `https://api.unsplash.com/search/photos?query=${query}&per_page=6`,
+
         {
           headers: {
             Authorization: `Client-ID ${API_KEY}`,
@@ -123,37 +127,38 @@ export const BuscaImagens = () => {
       );
   
       setImages(response.data.results);
+      setError(""); // Limpa qualquer erro anterior se a pesquisa for bem-sucedida.
     } catch (error) {
       console.error("Erro ao buscar imagens:", error);
+      setImages([]);
+      setError("Nenhuma imagem de gato encontrada. Tente outra busca."); // Define uma mensagem de erro.
     }
   };
   
   return (
-    <Conteiner >
-     
+    <Conteiner>
       <SearchInput
         type="text"
-        placeholder="Digite sua busca"
+        placeholder="Digite 'gato' para buscar imagens"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <InputButto
-      type="button"
-      value ="buscar"
-      onClick={handleSearch}
-    
-
+        type="button"
+        value="Buscar"
+        onClick={handleSearch}
       />
-        <Conteiner style={{gap:"2px"}}>
-        {images.map((images) => (
-          <Cards key={images.id}>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <Conteiner style={{ gap: "2px" }}>
+        {images.map((image) => (
+          <Cards key={image.id}>
             <Imagem
-              src={images.urls.small}
-              alt={images.alt_description || "Imagem"}
+              src={image.urls.small}
+              alt={image.alt_description || "Imagem"}
             />
           </Cards>
         ))}
-        </Conteiner>
+      </Conteiner>
     </Conteiner>
   
   );

@@ -30,10 +30,11 @@ height: 100%;
 
 
  export const CarouselPaginaInicial = ( ) => {
-  const screenSize = 400; 
+  const screenSizeMin = 400; 
+  
 
-  const slidesPerView = window.innerWidth < screenSize ? 1 : 3;
-  const spaceBetween = window.innerWidth < screenSize ? 10 : 30
+  const slidesPerView = window.innerWidth < screenSizeMin ? 1 : 3;
+  const spaceBetween = window.innerWidth < screenSizeMin ? 10 : 30
      return (
       <Conteiner>
       <Swiper
